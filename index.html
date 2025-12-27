@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POLRI | Database Personel</title>
+    <style>
+        body { background-color: #0d0d0d; color: #00ff41; font-family: 'Courier New', monospace; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .container { width: 90%; max-width: 450px; border: 1px solid #00ff41; padding: 20px; background: rgba(0, 10, 0, 0.9); box-shadow: 0 0 15px #00ff4133; }
+        .header { text-align: center; border-bottom: 2px solid #00ff41; margin-bottom: 20px; padding-bottom: 10px; }
+        input { 
+            background: #000; 
+            border: 1px solid #00ff41; 
+            color: #00ff41; 
+            padding: 12px; 
+            width: calc(100% - 26px); 
+            margin-bottom: 15px; 
+            text-align: center;
+            text-transform: uppercase;
+        }
+        button { background: #00ff41; color: #000; border: none; padding: 12px; width: 100%; cursor: pointer; font-weight: bold; }
+        .hidden { display: none; }
+        .id-card { width: 100%; border-radius: 5px; border: 1px solid #444; margin: 15px 0; }
+        .qr-box { background: white; padding: 10px; width: 150px; margin: 20px auto; text-align: center; color: black; font-size: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div style="font-size: 14px;">KEPOLISIAN NEGARA REPUBLIK INDONESIA</div>
+        <div style="font-size: 9px;">INTERNAL DATABASE ACCESS v4.0</div>
+    </div>
+
+    <div id="loginSection">
+        <p style="text-align: center; font-size: 12px;">MASUKKAN NAMA PERSONEL:</p>
+        <input type="text" id="nama" placeholder="NAMA LENGKAP" autocomplete="off">
+        <button onclick="auth()">OTENTIKASI</button>
+    </div>
+
+    <div id="dataSection" class="hidden">
+        <p style="text-align: center; font-size: 11px; color: yellow;">DATA DITEMUKAN - STATUS: GUGUR</p>
+        <img src="id_wahyudi.png" class="id-card" alt="ID WAHYUDI">
+        <div class="qr-box">
+            SCAN AKSES LAMPIRAN
+            <img src="qrcode.png" style="width: 100%; margin-top: 5px;" alt="QR Code">
+        </div>
+        <p style="font-size: 10px; text-align: center; opacity: 0.7;">Gunakan selisih angka lahir & kematian untuk membuka lampiran.</p>
+        <button onclick="location.reload()" style="font-size: 9px; margin-top: 10px;">KEMBALI</button>
+    </div>
+
+    <div id="dataSection2" class="hidden">
+        <p style="text-align: center; font-size: 11px; color: #ff0000;">DATA DITEMUKAN - STATUS: AKTIF (ADMIN)</p>
+        <img src="id_hendrawan.png" class="id-card" alt="ID HENDRAWAN">
+        <div class="qr-box">
+            SCAN PERSONEL
+            <img src="qrcodeh.png" style="width: 100%; margin-top: 5px;" alt="QR Code H">
+        </div>
+        <p style="font-size: 10px; text-align: center; opacity: 0.7;">Carilah Kata Kuncinya di profil X tersangka.</p>
+        <button onclick="location.reload()" style="font-size: 9px; margin-top: 10px;">KEMBALI</button>
+    </div>
+</div>
+
+<script>
+    function auth() {
+        let inputVal = document.getElementById('nama').value.toUpperCase().trim();
+
+        if (inputVal === "WAHYUDI NINGRAT") {
+            document.getElementById('loginSection').classList.add('hidden');
+            document.getElementById('dataSection').classList.remove('hidden');
+            document.getElementById('dataSection2').classList.add('hidden');
+        } 
+        else if (inputVal === "HENDRAWAN") {
+            document.getElementById('loginSection').classList.add('hidden');
+            document.getElementById('dataSection2').classList.remove('hidden');
+            document.getElementById('dataSection').classList.add('hidden');
+        } 
+        else { 
+            alert("AKSES DITOLAK: Nama tidak ditemukan."); 
+        }
+    }
+</script>
+</body>
+</html>
