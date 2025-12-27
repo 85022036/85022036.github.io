@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>TKP - LAMPIRAN 369</title>
+    <style>
+        body { background-color: #000; color: #8b0000; font-family: 'Times New Roman', serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .box { width: 90%; max-width: 400px; text-align: center; border: 1px solid #300; padding: 25px; }
+        input { background: transparent; border: none; border-bottom: 2px solid #8b0000; color: #ff0000; font-size: 28px; width: 120px; text-align: center; outline: none; margin-bottom: 20px; }
+        .hidden { display: none; }
+        .glitch { animation: shake 0.2s infinite; color: red; font-weight: bold; }
+        @keyframes shake { 0% {transform: translate(0,0)} 50% {transform: translate(1px, 1px)} 100% {transform: translate(0,0)} }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div id="inputKode">
+        <p style="font-size: 18px;">"Mati adalah angka..."</p>
+        <p style="font-size: 12px; color: #555;">Berapa selisih yang ia tinggalkan?</p>
+        <input type="text" id="kode" maxlength="3" autocomplete="off">
+        <br>
+        <button onclick="reveal()" style="background: #300; color: #8b0000; border: 1px solid #8b0000; padding: 10px 20px; cursor: pointer;">DEKRIPSI</button>
+    </div>
+
+    <div id="result" class="hidden">
+        <audio id="suara"><source src="suara.mp3" type="audio/mpeg"></audio>
+        <p class="glitch">PENGKHIANAT TERDETEKSI</p>
+        <p style="font-size: 11px; color: #666; font-style: italic;">Laporkan</p>
+        <hr style="border: 0.5px solid #300;">
+        <img src="lencana_hendrawan.png" style="width: 100%; filter: sepia(1) contrast(1.2);">
+        <p style="color: #aaa; font-size: 13px;">SUSPEK: <span style="color: white;">AKP HENDRAWAN</span><br>NRP: 82101544</p>
+    </div>
+</div>
+
+<script>
+    function reveal() {
+        if(document.getElementById('kode').value === "369") {
+            document.getElementById('inputKode').classList.add('hidden');
+            document.getElementById('result').classList.remove('hidden');
+            document.getElementById('suara').play();
+        } else { alert("Salah..."); }
+    }
+</script>
+</body>
+</html>
